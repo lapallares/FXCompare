@@ -1,0 +1,6 @@
+curl_cffi
+requests
+beautifulsoup4
+lxml
+rich
+pandas
