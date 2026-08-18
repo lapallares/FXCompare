@@ -4,9 +4,8 @@ CAMNOSA exchange rate provider.
 
 from datetime import datetime
 
-import requests
-
 from fxcompare.models import ExchangeRate
+from fxcompare.providers.client import session
 
 URL = "https://camnosa.com/api/tipo-de-cambio/"
 
@@ -16,7 +15,7 @@ def get_rate() -> ExchangeRate:
     Retrieve the current USD exchange rate from CAMNOSA.
     """
 
-    response = requests.get(URL, timeout=10)
+    response = session().get(URL, timeout=10)
     response.raise_for_status()
 
     data = response.json()
@@ -31,7 +30,4 @@ def get_rate() -> ExchangeRate:
 
 
 if __name__ == "__main__":
-
-    rate = get_rate()
-
-    print(rate)
+    print(get_rate())
